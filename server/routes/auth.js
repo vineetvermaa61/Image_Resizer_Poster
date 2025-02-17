@@ -12,7 +12,7 @@ router.get(
   passport.authenticate('twitter', { failureRedirect: '/login' }),
   (req, res) => {
     // Redirect to client URL after successful login (adjust to your deployed client URL)
-    res.redirect('http://localhost:3000');
+    res.redirect('https://image-resizer-poster.vercel.app/');
     // res.redirect('https://your-client-name.vercel.app');
   }
 );

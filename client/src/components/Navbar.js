@@ -5,16 +5,17 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [user, setUser] = useState(null);
+  const API_URL = process.env.REACT_APP_API_URL || '';
 
   useEffect(() => {
     axios
-      .get('/auth/user', { withCredentials: true })
+      .get(`${API_URL}/auth/user`, { withCredentials: true })
       .then((res) => setUser(res.data.user))
       .catch(() => setUser(null));
-  }, []);
+  }, [API_URL]);
 
   const handleLogout = () => {
-    window.location.href = 'http://localhost:5000/auth/logout';
+    window.location.href = `${API_URL}/auth/logout`;
   };
 
   return (

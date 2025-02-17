@@ -9,10 +9,11 @@ router.get('/twitter', passport.authenticate('twitter'));
 // Twitter auth callback
 router.get(
   '/twitter/callback',
-  passport.authenticate('twitter', { failureRedirect: 'http://localhost:3000/login' }),
+  passport.authenticate('twitter', { failureRedirect: '/login' }),
   (req, res) => {
-    // On success, redirect to client homepage
+    // Redirect to client URL after successful login (adjust to your deployed client URL)
     res.redirect('http://localhost:3000');
+    // res.redirect('https://your-client-name.vercel.app');
   }
 );
 
@@ -20,6 +21,7 @@ router.get(
 router.get('/logout', (req, res) => {
   req.logout(() => {
     res.redirect('http://localhost:3000');
+    // res.redirect('https://your-client-name.vercel.app');
   });
 });
 

@@ -20,21 +20,21 @@ mongoose
 // Middleware
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    // You can add your deployed client URL(s) here
+    origin: ['https://your-client-name.vercel.app', 'http://localhost:3000'],
     credentials: true,
   })
 );
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// server/app.js (session middleware update)
+// Session middleware (use secure: false in development)
 app.use(
   session({
-    secret: 'your_secret_key', // change in production
+    secret: 'your_secret_key', // change for production
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false }, // Use secure: false in development (non-HTTPS)
+    cookie: { secure: false },
   })
 );
 

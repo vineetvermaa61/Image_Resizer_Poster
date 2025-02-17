@@ -11,7 +11,7 @@ const router = express.Router();
 const storage = multer.memoryStorage();
 const upload = multer({
   storage,
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5 MB limit
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5 MB
   fileFilter: (req, file, cb) => {
     if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
       cb(null, true);
@@ -34,7 +34,8 @@ function ensureAuth(req, res, next) {
   if (req.isAuthenticated()) return next();
   return res.status(401).json({ error: 'User not authenticated' });
 }
-// server/routes/upload.js (update the uploadToImgur function)
+
+// Function to upload an image buffer to Imgur with increased timeout
 async function uploadToImgur(buffer) {
   const IMGUR_CLIENT_ID = process.env.IMGUR_CLIENT_ID;
   const base64Image = buffer.toString('base64');

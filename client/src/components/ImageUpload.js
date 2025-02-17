@@ -13,6 +13,8 @@ const ImageUpload = () => {
   const [message, setMessage] = useState('');
   const [uploading, setUploading] = useState(false);
 
+  const API_URL = process.env.REACT_APP_API_URL || '';
+
   const handleFileChange = (e) => {
     if (e.target.files && e.target.files[0]) {
       setSelectedFile(e.target.files[0]);
@@ -38,8 +40,7 @@ const ImageUpload = () => {
     formData.append('sizes', JSON.stringify(sizes));
 
     try {
-      // Use full backend URL to avoid proxy issues
-      const response = await axios.post('http://localhost:5000/upload', formData, {
+      const response = await axios.post(`${API_URL}/upload`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         withCredentials: true,
       });

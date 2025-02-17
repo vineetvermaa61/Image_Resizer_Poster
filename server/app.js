@@ -21,7 +21,7 @@ mongoose
 app.use(
   cors({
     // You can add your deployed client URL(s) here
-    origin: ['https://your-client-name.vercel.app', 'http://localhost:3000'],
+    origin: ['https://image-resizer-poster.vercel.app/', 'http://localhost:3000'],
     credentials: true,
   })
 );

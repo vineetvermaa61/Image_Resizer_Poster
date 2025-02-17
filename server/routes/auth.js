@@ -20,7 +20,7 @@ router.get(
 // Logout route
 router.get('/logout', (req, res) => {
   req.logout(() => {
-    res.redirect('http://localhost:3000');
+    res.redirect('https://image-resizer-poster.vercel.app/');
     // res.redirect('https://your-client-name.vercel.app');
   });
 });
